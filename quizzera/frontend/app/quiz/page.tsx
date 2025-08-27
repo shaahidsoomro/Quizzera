@@ -1,11 +1,10 @@
 "use client";
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
+import { apiFetch } from '@/lib/api'
 
 async function fetchMcqs() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/mcqs`)
-  if (!res.ok) throw new Error('Failed to load MCQs')
-  return res.json()
+  return apiFetch<any[]>('/mcqs')
 }
 
 export default function QuizPage() {
