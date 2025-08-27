@@ -1,5 +1,7 @@
+import { API_BASE } from '../../lib/api'
+export const dynamic = 'force-dynamic'
 async function fetchArticles() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/kb`, { next: { revalidate: 30 } })
+  const res = await fetch(`${API_BASE}/kb`, { cache: 'no-store' })
   if (!res.ok) return []
   return res.json()
 }

@@ -1,4 +1,6 @@
 import JsonLd from '../../components/JsonLd'
+import { API_BASE } from '../../lib/api'
+export const dynamic = 'force-dynamic'
 
 export const metadata = {
   title: 'Government Jobs – Quizzera | FPSC, PPSC, BPS-16 to BPS-21',
@@ -8,7 +10,7 @@ export const metadata = {
 }
 
 async function fetchJobs(){
-  const r = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/jobs`, { next: { revalidate: 300 } })
+  const r = await fetch(`${API_BASE}/jobs`, { cache: 'no-store' })
   if(!r.ok) return []
   return r.json()
 }

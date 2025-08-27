@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import JsonLd from '../components/JsonLd'
+import { API_BASE } from '../lib/api'
+export const dynamic = 'force-dynamic'
 
 export const metadata = {
   title: 'Quizzera – Pakistan & India’s No.1 Competitive Exam Preparation Platform | 1M+ MCQs',
@@ -107,7 +109,7 @@ export default function HomePage() {
 }
 
 async function fetchNotifications(){
-  const r = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/notifications`, { next: { revalidate: 300 } })
+  const r = await fetch(`${API_BASE}/notifications`, { cache: 'no-store' })
   if(!r.ok) return []
   return r.json()
 }
