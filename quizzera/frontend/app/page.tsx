@@ -90,6 +90,14 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-6 py-10">
         <div className="rounded border border-white/10 p-6 text-center">
+          <h3 className="text-xl font-semibold font-heading">What’s New</h3>
+          <p className="mt-2 text-zinc-300">See the latest features, improvements, and announcements.</p>
+          <Link href="/blog/quizzera-new-features-2025" className="mt-4 inline-block rounded bg-[color:var(--qz-blue)] px-6 py-3 text-white hover:opacity-90">Read the Update</Link>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-10">
+        <div className="rounded border border-white/10 p-6 text-center">
           <h3 className="text-xl font-semibold font-heading">Mentorship</h3>
           <p className="mt-2 text-zinc-300">1:1 guidance and curated study plans from experienced mentors.</p>
           <Link href="/mentorship/mentoring" className="mt-4 inline-block rounded btn-primary px-6 py-3">Meet Mentors</Link>

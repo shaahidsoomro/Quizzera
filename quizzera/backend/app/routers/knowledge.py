@@ -37,12 +37,47 @@ def seed_fpsc_announcement(db: Session):
     return art
 
 
+def seed_new_features(db: Session):
+    slug = "quizzera-new-features-2025"
+    exists = db.query(Article).filter(Article.slug == slug).first()
+    if exists:
+        return exists
+    content = (
+        "<h2>New Features Added on Quizzera – Pakistan & India’s No.1 Competitive Exam Prep Platform!</h2>"
+        "<p>We’re excited to announce powerful new updates to Quizzera, the leading exam preparation platform with over 1 Million MCQs designed for FPSC, PPSC, UPSC, SSC, IELTS, Teacher Certification, and many more!</p>"
+        "<ul>"
+        "<li>AI-Powered Exam Recommendations</li>"
+        "<li>Smart MCQs Navigator</li>"
+        "<li>Exam Simulation Mode</li>"
+        "<li>Leaderboard & Analytics</li>"
+        "<li>Certification Generator</li>"
+        "<li>User Dashboard</li>"
+        "<li>Exam Disclaimer & Policy Popup</li>"
+        "<li>Multi-Country Coverage</li>"
+        "<li>1 Million+ MCQs Database</li>"
+        "</ul>"
+        "<p>Coming Soon: Mobile Apps, AI Study Assistant (QuizzeraGPT), Community Forum.</p>"
+    )
+    art = Article(slug=slug, title="Quizzera New Features (2025)", content=content, tags="Product,Update")
+    db.add(art)
+    db.commit()
+    db.refresh(art)
+    return art
+
+
 @router.post("/seed/fpsc")
 def seed(db: Session = Depends(get_db), user=Depends(get_current_user)):
     if user.role != "admin":
         raise HTTPException(status_code=403, detail="Not authorized")
     art = seed_fpsc_announcement(db)
     return art
+
+
+@router.post("/seed/new-features")
+def seed_features(db: Session = Depends(get_db), user=Depends(get_current_user)):
+    if user.role != "admin":
+        raise HTTPException(status_code=403, detail="Not authorized")
+    return seed_new_features(db)
 
 
 @router.get("")
