@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from 'react'
+import { API_BASE } from '../lib/api'
 
 export default function MockExamRunner(){
   const [attemptId,setAttemptId]=useState<number| null>(null)
@@ -12,7 +13,7 @@ export default function MockExamRunner(){
 
   async function start(){
     const token=localStorage.getItem('token')
-    const res=await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/mock-exams/start`,{method:'POST',headers:{'Content-Type':'application/json', ...(token?{Authorization:`Bearer ${token}`}:{})},body:JSON.stringify({exam_id:1})})
+    const res=await fetch(`${API_BASE}/mock-exams/start`,{method:'POST',headers:{'Content-Type':'application/json', ...(token?{Authorization:`Bearer ${token}`}:{})},body:JSON.stringify({exam_id:1})})
     const data=await res.json();
     if(!res.ok){ alert(data.detail||'Failed'); return }
     setAttemptId(data.attempt_id)
@@ -24,14 +25,14 @@ export default function MockExamRunner(){
   async function answer(optionId:number){
     if(!attemptId) return
     const token=localStorage.getItem('token')
-    await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/mock-exams/answer`,{method:'POST',headers:{'Content-Type':'application/json', ...(token?{Authorization:`Bearer ${token}`}:{})},body:JSON.stringify({attempt_id:attemptId,q_id:items[idx]?.q_id,payload:{option_id:optionId}})})
+    await fetch(`${API_BASE}/mock-exams/answer`,{method:'POST',headers:{'Content-Type':'application/json', ...(token?{Authorization:`Bearer ${token}`}:{})},body:JSON.stringify({attempt_id:attemptId,q_id:items[idx]?.q_id,payload:{option_id:optionId}})})
     setIdx(i=> Math.min(i+1, items.length-1))
   }
 
   async function finish(){
     if(!attemptId) return
     const token=localStorage.getItem('token')
-    const res=await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/mock-exams/finish`,{method:'POST',headers:{'Content-Type':'application/json', ...(token?{Authorization:`Bearer ${token}`}:{})},body:JSON.stringify({attempt_id:attemptId})})
+    const res=await fetch(`${API_BASE}/mock-exams/finish`,{method:'POST',headers:{'Content-Type':'application/json', ...(token?{Authorization:`Bearer ${token}`}:{})},body:JSON.stringify({attempt_id:attemptId})})
     const data=await res.json();
     alert(`Score: ${data.score}/${data.total}`)
   }

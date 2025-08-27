@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react'
+import { API_BASE } from '../lib/api'
 
 export default function EligibilityForm(){
   const [result,setResult]=useState<any>(null)
@@ -10,7 +11,7 @@ export default function EligibilityForm(){
       domicile: String(formData.get('domicile')||''),
       experience: Number(formData.get('experience')||0),
     }
-    const res=await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/eligibility/check`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+    const res=await fetch(`${API_BASE}/eligibility/check`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
     const data=await res.json();
     setResult(data)
   }

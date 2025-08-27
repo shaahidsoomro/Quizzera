@@ -1,12 +1,13 @@
 "use client";
 import { useState } from 'react'
+import { API_BASE } from '../lib/api'
 
 export default function ContactForm(){
   const [status, setStatus] = useState<string | null>(null)
   async function submit(formData: FormData) {
     setStatus("Sending...")
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/export/mcqs.csv`)
+      await fetch(`${API_BASE}/export/mcqs.csv`)
       setStatus("Message sent (demo stub)")
     } catch {
       setStatus("Failed to send")

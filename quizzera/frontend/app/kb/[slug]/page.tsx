@@ -1,7 +1,8 @@
+import { API_BASE } from '../../../lib/api'
 type Props = { params: { slug: string } }
 
 async function fetchArticle(slug: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/kb/${slug}`, { next: { revalidate: 30 } })
+  const res = await fetch(`${API_BASE}/kb/${slug}`, { next: { revalidate: 30 } })
   if (!res.ok) return null
   return res.json()
 }

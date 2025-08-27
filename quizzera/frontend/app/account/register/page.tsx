@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react'
+import { API_BASE } from '../../../lib/api'
 
 export default function RegisterPage(){
   const [msg,setMsg]=useState<string|null>(null)
@@ -10,7 +11,7 @@ export default function RegisterPage(){
       email:String(formData.get('email')||''),
       password:String(formData.get('password')||''),
     }
-    const res=await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/register`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+    const res=await fetch(`${API_BASE}/auth/register`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
     const data=await res.json();
     if(!res.ok){ setMsg(data.detail||'Failed'); return; }
     setMsg('Registered! You can login now.')

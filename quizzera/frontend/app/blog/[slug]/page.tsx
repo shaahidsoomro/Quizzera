@@ -2,8 +2,9 @@ import JsonLd from '../../../components/JsonLd'
 
 type Props = { params: { slug: string } }
 
+import { API_BASE } from '../../../lib/api'
 async function fetchArticle(slug: string){
-  const r = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/kb/${slug}`, { next: { revalidate: 300 } })
+  const r = await fetch(`${API_BASE}/kb/${slug}`, { next: { revalidate: 300 } })
   if(!r.ok) return null
   return r.json()
 }
