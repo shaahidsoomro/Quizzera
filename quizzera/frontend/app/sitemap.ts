@@ -9,7 +9,7 @@ export default async function sitemap() {
     '/analytics/progress','/analytics/leaderboard','/analytics/reports',
     '/resources/books','/resources/notes','/resources/blogs','/resources/podcasts','/resources/youtube-lectures',
     '/community/forum','/community/discussions','/community/study-groups',
-    '/blog',
+    '/blog','/blog/categories/pakistan-exams','/blog/categories/india-exams','/blog/categories/ielts-global','/blog/categories/teacher-certification','/blog/categories/general-aptitude',
     '/about','/about/contact','/about/faq','/about/terms','/about/privacy',
     '/account/login','/account/register','/account/dashboard','/account/settings'
   ]
