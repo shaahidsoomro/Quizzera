@@ -11,7 +11,43 @@ Full-stack quiz and exam platform.
 1. Copy env file:
    cp .env.example .env
 2. Build and start:
-   docker compose up --build
+   docker compose up -d --build
 3. Open:
    - Frontend: http://localhost:3000
    - API: http://localhost:8000/docs
+
+## Health endpoints
+
+- Backend liveness: GET /healthz → 200 OK
+- Backend readiness: GET /ready → 200 OK when DB is ready
+
+## Development
+
+- Frontend dev: `cd frontend && npm run dev`
+- Backend dev: `cd backend && uvicorn app.main:app --reload`
+
+## Default Users
+
+The following users are automatically created on startup:
+
+### Admin User
+- Email: `shahidsoomro786@gmail.com`
+- Password: `Shahid@786`
+- Role: `admin`
+
+### Regular User
+- Email: `cyberworldinsight@gmail.com`
+- Password: `Shahid@786`
+- Role: `student`
+
+## Migrations
+
+Alembic runs automatically on container start (compose).
+
+Manual:
+
+```
+cd backend
+alembic revision -m "your message"
+alembic upgrade head
+```
