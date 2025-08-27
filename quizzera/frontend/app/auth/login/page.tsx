@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react'
+import { API_BASE } from '../../../lib/api'
 
 export default function LoginPage() {
   const [message, setMessage] = useState<string | null>(null)
@@ -10,7 +11,7 @@ export default function LoginPage() {
     body.set('username', String(formData.get('email') || ''))
     body.set('password', String(formData.get('password') || ''))
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`, {
+      const res = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: body.toString(),

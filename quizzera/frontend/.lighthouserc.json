@@ -1,0 +1,20 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": ".next", 
+      "numberOfRuns": 1,
+      "url": [
+        "http://localhost:3000/",
+        "http://localhost:3000/practice/mcqs-bank",
+        "http://localhost:3000/exams/fpsc"
+      ]
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["warn", {"minScore": 0.85}],
+        "categories:accessibility": ["warn", {"minScore": 0.9}],
+        "categories:seo": ["error", {"minScore": 0.95}]
+      }
+    }
+  }
+}

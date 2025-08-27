@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '../styles/brand.css';
+
 :root {
   --bg: #0b1020;
   --fg: #e6e6ea;
@@ -15,3 +17,7 @@ body {
   background: var(--bg);
   color: var(--fg);
 }
+
+h1, h2, h3, h4, .font-heading { font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; text-transform: none; font-weight: 700; }
+body, p, li, input, button, textarea { font-family: 'Roboto', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+button { text-transform: capitalize; font-weight: 600; }

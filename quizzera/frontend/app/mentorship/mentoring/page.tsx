@@ -1,0 +1,4 @@
+import { API_BASE } from '../../../lib/api'
+export const dynamic = 'force-dynamic'
+async function fetchMentors(){const r=await fetch(`${API_BASE}/mentors`,{cache:'no-store'}); if(!r.ok) return []; return r.json();}
+export default async function Page(){const data=await fetchMentors();return(<main className="mx-auto max-w-5xl px-6 py-12"><h1 className="text-3xl font-semibold">1:1 Mentoring</h1><ul className="mt-6 space-y-3">{data.map((m:any)=>(<li key={m.id} className="rounded border border-white/10 p-3">Mentor #{m.id}</li>))}</ul></main>)}
