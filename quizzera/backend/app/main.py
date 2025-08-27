@@ -1,9 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.middleware.rate_limit import RateLimitMiddleware
 
 from app.routers import auth, mcqs, exams, analytics, export
 from app.routers import knowledge
 from app.routers import exams_catalog, mock_exams, resources, notifications_jobs, eligibility, mentors, community, seo
+from app.api.v1.routers import payments as payments_v1
 from app.models.base import Base
 from app.db.session import engine
 
@@ -16,6 +18,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.add_middleware(RateLimitMiddleware, max_per_minute=30)
 
 @app.on_event("startup")
 def on_startup():
@@ -39,3 +42,4 @@ app.include_router(eligibility.router, prefix="/eligibility", tags=["eligibility
 app.include_router(mentors.router, prefix="/mentors", tags=["mentors"])
 app.include_router(community.router, tags=["community"])  # /community/*, /forum
 app.include_router(seo.router, tags=["seo"])  # /seo/page, /sitemap.xml, /robots.txt
+app.include_router(payments_v1.router, prefix="/api/v1", tags=["payments"])  # payments stubs
