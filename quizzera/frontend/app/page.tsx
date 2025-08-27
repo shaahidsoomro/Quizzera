@@ -2,12 +2,12 @@ import Link from 'next/link'
 import JsonLd from '../components/JsonLd'
 
 export const metadata = {
-  title: 'Quizzera: Pakistan Govt Jobs (BPS-16–BPS-21) Competitive Exam Platform',
-  description: 'Prepare for FPSC, PPSC, SPSC, KPPSC, BPSC, NTS/OTS/ETEA with MCQs, Past Papers, Mock Exams, Syllabus mapping, Notifications, Jobs, Mentorship, and Analytics.',
+  title: 'Quizzera – Pakistan & India’s No.1 Competitive Exam Preparation Platform | 1M+ MCQs',
+  description: 'Prepare smarter with Quizzera – Pakistan’s No.1 competitive exam preparation website. Covering FPSC, PPSC, UPSC, SSC, IELTS, Teacher Certification & more. Access 1 Million+ verified MCQs, quizzes, and past papers for BPS-16 to BPS-21 government jobs.',
   alternates: { canonical: 'https://quizzera.pk/' },
   openGraph: {
-    title: 'Quizzera – Pakistan Govt Jobs (BPS-16–BPS-21) Exam Prep',
-    description: 'MCQs, Past Papers, Mock Exams, Jobs & Notifications. Pakistan’s No.1 Exam Prep.',
+    title: 'Quizzera – Pakistan & India’s No.1 Competitive Exam Preparation Platform',
+    description: '1M+ MCQs, Past Papers, Mock Exams, Jobs & Notifications for FPSC, PPSC, UPSC, SSC, IELTS, Teaching.',
     url: 'https://quizzera.pk/',
     siteName: 'Quizzera',
     locale: 'en_PK',

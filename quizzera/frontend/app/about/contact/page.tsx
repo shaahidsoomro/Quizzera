@@ -1,6 +1,11 @@
 "use client";
 import { useState } from 'react'
 
+export const metadata = {
+  title: 'Contact Quizzera – Pakistan & India’s No.1 Exam Prep Platform',
+  description: 'Get in touch with Quizzera. Reach our team for support, partnerships, and queries about FPSC, UPSC, IELTS & Teacher exam preparation.',
+}
+
 export default function ContactPage() {
   const [status, setStatus] = useState<string | null>(null)
 
