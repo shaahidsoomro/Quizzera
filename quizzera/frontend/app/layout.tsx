@@ -7,6 +7,12 @@ import Footer from '../components/Footer'
 export const metadata: Metadata = {
   title: 'Quizzera – The Ultimate Online Quiz & Exam Platform',
   description: 'Practice quizzes, timed exams, analytics, and leaderboards built for students and educators.',
+  metadataBase: new URL('https://quizzera.pk'),
+  openGraph: {
+    siteName: 'Quizzera',
+    type: 'website',
+    locale: 'en_PK',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
