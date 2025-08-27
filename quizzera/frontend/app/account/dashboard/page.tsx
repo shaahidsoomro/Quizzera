@@ -1,0 +1,2 @@
+async function analytics(){const r=await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/analytics/me`,{cache:'no-store',headers:{Authorization:''}}); if(!r.ok) return null; return r.json();}
+export default async function Page(){return(<main className="mx-auto max-w-4xl px-6 py-12"><h1 className="text-3xl font-semibold">Dashboard</h1><p className="mt-4 text-zinc-300">Welcome back. Your recent activity will appear here.</p></main>)}

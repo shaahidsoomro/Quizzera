@@ -1,0 +1,1 @@
+export default function Page(){return(<main className="mx-auto max-w-4xl px-6 py-12"><h1 className="text-3xl font-semibold">Study Groups</h1><p className="mt-4 text-zinc-300">Join public or private groups by exam.</p></main>)}

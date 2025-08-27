@@ -1,0 +1,1 @@
+export default function Page(){return(<main className="mx-auto max-w-4xl px-6 py-12"><h1 className="text-3xl font-semibold">Podcasts</h1><p className="mt-4 text-zinc-300">Listen and learn on the go.</p></main>)}
