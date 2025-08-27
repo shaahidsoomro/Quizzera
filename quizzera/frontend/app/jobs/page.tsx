@@ -3,6 +3,8 @@ import JsonLd from '../../components/JsonLd'
 export const metadata = {
   title: 'Government Jobs – Quizzera | FPSC, PPSC, BPS-16 to BPS-21',
   description: 'Latest government jobs and notifications from FPSC, PPSC, SPSC, KPPSC, BPSC. Structured JobPosting and apply links.',
+  alternates: { canonical: 'https://quizzera.pk/jobs' },
+  openGraph: { title: 'Government Jobs – Quizzera', description: 'Latest jobs and notices with apply links.', url: 'https://quizzera.pk/jobs', siteName: 'Quizzera', type: 'website' },
 }
 
 async function fetchJobs(){

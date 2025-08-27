@@ -1,6 +1,18 @@
 "use client";
 import { useState } from 'react'
 
+export const metadata = {
+  title: 'Mock Exams – Quizzera | Timed Tests with Negative Marking',
+  description: 'Run FPSC-style timed mock exams with auto-scoring and analytics. Pakistan & India exam prep.',
+  alternates: { canonical: 'https://quizzera.pk/practice/mock-exams' },
+  openGraph: {
+    title: 'Mock Exams – Quizzera',
+    description: 'Timed tests, one-question view, auto-scoring and analytics.',
+    url: 'https://quizzera.pk/practice/mock-exams',
+    siteName: 'Quizzera', type: 'website'
+  }
+}
+
 export default function Page(){
   const [msg,setMsg]=useState<string|null>(null)
   async function start(){
