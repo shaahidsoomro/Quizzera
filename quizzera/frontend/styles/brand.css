@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
+
+:root {
+  --qz-blue: #1E3A8A;
+  --qz-green: #10B981;
+  --qz-gold: #F59E0B;
+  --qz-slate: #374151;
+  --qz-white: #FFFFFF;
+  --qz-light: #F3F4F6;
+}
+
+.font-heading { font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+.font-body { font-family: 'Roboto', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+
+.btn-primary { background: var(--qz-green); color: var(--qz-white); }
+.btn-primary:hover { background: #0ea371; }
+
+.brand-header { background: linear-gradient(180deg, rgba(30,58,138,0.6), rgba(30,58,138,0.2)); }
+.brand-legal { color: var(--qz-light); }

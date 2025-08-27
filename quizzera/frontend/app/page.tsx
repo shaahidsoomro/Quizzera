@@ -46,18 +46,18 @@ export default function HomePage() {
     <main className="min-h-screen">
       <JsonLd data={jsonLd()} />
       <section className="mx-auto max-w-5xl px-6 py-20 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight">Pakistan’s No.1 Govt Jobs Prep (BPS-16–BPS-21)</h1>
+        <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-tight text-[color:var(--qz-white)]">Pakistan’s No.1 Govt Jobs Prep (BPS-16–BPS-21)</h1>
         <p className="mt-6 text-lg text-zinc-300">
           FPSC · PPSC · SPSC · KPPSC · BPSC · NTS/OTS/ETEA — MCQs, Past Papers, Mock Exams, Jobs & Notifications.
         </p>
         <div className="mt-10 flex items-center justify-center gap-4">
-          <Link className="rounded bg-indigo-500 px-6 py-3 hover:bg-indigo-400" href="/practice/mock-exams">Start a Mock Exam</Link>
-          <Link className="rounded bg-white/10 px-6 py-3 hover:bg-white/20" href="/practice/mcqs-bank">Practice MCQs</Link>
+          <Link className="rounded btn-primary px-6 py-3" href="/practice/mock-exams">Begin Your Success Journey</Link>
+          <Link className="rounded bg-[color:var(--qz-blue)] px-6 py-3 text-white hover:opacity-90" href="/practice/mcqs-bank">Practice MCQs</Link>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-10">
-        <h2 className="text-2xl font-semibold">Exam Bodies</h2>
+        <h2 className="text-2xl font-semibold font-heading">Exam Bodies</h2>
         <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
           {[
             { href: '/exams/fpsc', label: 'FPSC' },
@@ -75,7 +75,7 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-10">
-        <h2 className="text-2xl font-semibold">Practice Preview</h2>
+        <h2 className="text-2xl font-semibold font-heading">Practice Preview</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           <Link href="/practice/mcqs-bank" className="rounded border border-white/10 p-6 hover:bg-white/5">MCQs Bank</Link>
           <Link href="/practice/past-papers" className="rounded border border-white/10 p-6 hover:bg-white/5">Past Papers</Link>
@@ -84,20 +84,20 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-10">
-        <h2 className="text-2xl font-semibold">Latest Notifications</h2>
+        <h2 className="text-2xl font-semibold font-heading">Latest Notifications</h2>
         <Notifications />
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-10">
         <div className="rounded border border-white/10 p-6 text-center">
-          <h3 className="text-xl font-semibold">Mentorship</h3>
+          <h3 className="text-xl font-semibold font-heading">Mentorship</h3>
           <p className="mt-2 text-zinc-300">1:1 guidance and curated study plans from experienced mentors.</p>
-          <Link href="/mentorship/mentoring" className="mt-4 inline-block rounded bg-indigo-500 px-6 py-3">Meet Mentors</Link>
+          <Link href="/mentorship/mentoring" className="mt-4 inline-block rounded btn-primary px-6 py-3">Meet Mentors</Link>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-10">
-        <h2 className="text-2xl font-semibold">Social Proof</h2>
+        <h2 className="text-2xl font-semibold font-heading">Social Proof</h2>
         <ul className="mt-4 grid gap-4 md:grid-cols-3 text-sm text-zinc-300">
           <li className="rounded border border-white/10 p-4">“Cleared BPS-17 first attempt with Quizzera’s mocks.”</li>
           <li className="rounded border border-white/10 p-4">“Accurate FPSC-style MCQs and timely notifications.”</li>

@@ -1,13 +1,17 @@
 "use client";
 import Link from 'next/link'
 import { useState } from 'react'
+import { Search, CheckCircle2 } from 'lucide-react'
 
 export default function Header() {
   const [open, setOpen] = useState(false)
   return (
-    <header className="border-b border-white/10 bg-black/30 backdrop-blur">
+    <header className="border-b border-white/10 brand-header backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/" className="font-bold">Quizzera</Link>
+        <Link href="/" className="font-bold font-heading text-white flex items-center gap-2">
+          <span className="inline-flex h-6 w-6 items-center justify-center rounded bg-white/20 text-white"><Search size={16} /></span>
+          Quizzera
+        </Link>
         <nav className="hidden gap-6 md:flex">
           <div className="group relative">
             <Link href="/exams">Exams</Link>

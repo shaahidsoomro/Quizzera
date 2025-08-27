@@ -43,7 +43,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/10">
+      <div className="border-t border-white/10 bg-[color:var(--qz-slate)]/30">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-4 py-4 text-xs text-zinc-400 md:flex-row">
           <div className="space-x-3">
             <Link href="/about/faq">FAQ</Link>
@@ -52,7 +52,7 @@ export default function Footer() {
             <span>|</span>
             <Link href="/about/privacy">Privacy Policy</Link>
           </div>
-          <div>
+          <div className="brand-legal">
             © 2025 Quizzera — Pakistan’s No.1 Govt Jobs & Competitive Exam Prep (BPS-16–BPS-21). All Rights Reserved.
           </div>
         </div>
