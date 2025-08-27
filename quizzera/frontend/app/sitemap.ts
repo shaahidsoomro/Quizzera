@@ -3,7 +3,7 @@ export default async function sitemap() {
   const staticPages = [
     '',
     '/exams','/exams/fpsc','/exams/ppsc','/exams/spsc','/exams/kppsc','/exams/bpsc','/exams/css','/exams/pms','/exams/nts-ots-etea',
-    '/exams-india','/ielts','/teacher-certification',
+    '/exams-india','/ielts','/teacher-certification','/jobs',
     '/practice/mcqs-bank','/practice/past-papers','/practice/mock-exams','/practice/quizzes',
     '/mentorship/mentoring','/mentorship/study-plans','/mentorship/live-sessions',
     '/analytics/progress','/analytics/leaderboard','/analytics/reports',
