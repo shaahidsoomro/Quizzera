@@ -59,6 +59,14 @@ if __name__ == "__main__":
     ADMIN_EMAIL = "shahidsoomro786@gmail.com"
     ADMIN_PASSWORD = "Shahid@786"
     
+    # Regular user credentials
+    USER_EMAIL = "cyberworldinsight@gmail.com"
+    USER_PASSWORD = "Shahid@786"
+    
     print("Creating admin user...")
     create_admin_user(ADMIN_EMAIL, ADMIN_PASSWORD, "admin")
-    print("Admin user creation completed!")
+    
+    print("Creating regular user...")
+    create_admin_user(USER_EMAIL, USER_PASSWORD, "student")
+    
+    print("User creation completed!")

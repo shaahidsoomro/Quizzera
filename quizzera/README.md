@@ -26,12 +26,19 @@ Full-stack quiz and exam platform.
 - Frontend dev: `cd frontend && npm run dev`
 - Backend dev: `cd backend && uvicorn app.main:app --reload`
 
-## Admin User
+## Default Users
 
-An admin user is automatically created on startup:
+The following users are automatically created on startup:
+
+### Admin User
 - Email: `shahidsoomro786@gmail.com`
 - Password: `Shahid@786`
 - Role: `admin`
+
+### Regular User
+- Email: `cyberworldinsight@gmail.com`
+- Password: `Shahid@786`
+- Role: `student`
 
 ## Migrations
 
