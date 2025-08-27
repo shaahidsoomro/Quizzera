@@ -61,3 +61,19 @@ def exam_result(exam_id: int, db: Session = Depends(get_db), user=Depends(get_cu
     if not attempt:
         raise HTTPException(status_code=404, detail="Attempt not found")
     return attempt
+
+@router.get("/fpsc/rules")
+def fpsc_rules():
+    return {
+        "effective_date": "2025-08-22",
+        "applies_from_advert": "Consolidated Advertisement No. 04/2025 (21.9.2025)",
+        "negative_marking": 0.25,
+        "schemes": [
+            {"bps": [16, 17], "papers": 1, "marks_per_paper": 100, "pass_threshold": 0.40},
+            {"bps": [18, 19], "category": "Doctors", "papers": 2, "marks_per_paper": 100, "pass_threshold": 0.40},
+            {"bps": [18, 19], "category": "General Management", "papers": 2, "marks_per_paper": 100, "pass_threshold": 0.40},
+            {"bps": [18, 19], "category": "Teaching", "papers": 2, "marks_per_paper": 100, "pass_threshold": 0.50},
+            {"bps": [18, 19], "category": "Professional/Technical", "papers": 2, "marks_per_paper": 100, "pass_threshold": 0.50},
+            {"bps": [20, 21], "papers": 2, "marks_per_paper": 100, "pass_threshold": 0.50},
+        ],
+    }

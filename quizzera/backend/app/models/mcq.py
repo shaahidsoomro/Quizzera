@@ -11,6 +11,11 @@ class MCQ(Base):
     options: Mapped[dict] = mapped_column(JSONB, nullable=False)
     correct_key: Mapped[str] = mapped_column(String(10), nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    # New tagging columns for filtering and exam mapping
+    exam: Mapped[str | None] = mapped_column(String(100))
+    subject: Mapped[str | None] = mapped_column(String(150))
+    topic: Mapped[str | None] = mapped_column(String(200))
+    difficulty: Mapped[str | None] = mapped_column(String(20))
 
 class Exam(Base):
     __tablename__ = "exams"

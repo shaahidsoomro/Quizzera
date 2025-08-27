@@ -16,6 +16,35 @@ def get_db():
         db.close()
 
 
+def seed_fpsc_announcement(db: Session):
+    slug = "fpsc-mcq-reform-2025"
+    exists = db.query(Article).filter(Article.slug == slug).first()
+    if exists:
+        return exists
+    content = (
+        "<p>As of August 22, 2025, the Federal Public Service Commission (FPSC) will replace all descriptive written tests with objective (MCQ) based tests for posts under General Recruitment, effective from Consolidated Advertisement No. 04/2025 (dated 21.9.2025).</p>"
+        "<ul>"
+        "<li><strong>BS-16 & 17 (All Posts):</strong> One MCQ paper of 100 marks; 40% passing per paper; 0.25 negative per wrong answer.</li>"
+        "<li><strong>BS-18 & 19 (Doctors, General Management, Teaching, Professional/Technical):</strong> Two MCQ papers of 100 marks each; 40% passing per paper for Doctors/General; 50% for Teaching/Professional/Technical; 0.25 negative per wrong answer.</li>"
+        "<li><strong>BS-20 & 21 (All Posts):</strong> Two MCQ papers of 100 marks each; 50% passing per paper; 0.25 negative per wrong answer.</li>"
+        "</ul>"
+        "<p>This change applies to all relevant posts advertised by FPSC.</p>"
+    )
+    art = Article(slug=slug, title="FPSC MCQ-Based Reform (2025)", content=content, tags="FPSC,Policy")
+    db.add(art)
+    db.commit()
+    db.refresh(art)
+    return art
+
+
+@router.post("/seed/fpsc")
+def seed(db: Session = Depends(get_db), user=Depends(get_current_user)):
+    if user.role != "admin":
+        raise HTTPException(status_code=403, detail="Not authorized")
+    art = seed_fpsc_announcement(db)
+    return art
+
+
 @router.get("")
 def list_articles(db: Session = Depends(get_db)):
     return db.query(Article).order_by(Article.created_at.desc()).all()
