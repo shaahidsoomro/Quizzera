@@ -1,0 +1,29 @@
+# Node
+node_modules/
+.next/
+.out/
+.yarn/
+yarn.lock
+pnpm-lock.yaml
+
+# Frontend build
+frontend/.next/
+frontend/out/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.local
+
+# Docker
+*.log
+
+# Alembic
+backend/migrations/versions/*.pyc
+backend/migrations/__pycache__/
+
+# OS
+.DS_Store
+Thumbs.db
