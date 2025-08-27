@@ -1,5 +1,7 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
 from sqlalchemy.orm import Session
+import csv
+import io
 
 from app.db.session import SessionLocal
 from app.models.mcq import MCQ
@@ -30,6 +32,35 @@ def create_mcq(mcq: dict, db: Session = Depends(get_db), user=Depends(get_curren
     db.commit()
     db.refresh(m)
     return m
+
+
+@router.post("/import")
+def import_mcqs(file: UploadFile = File(...), db: Session = Depends(get_db), user=Depends(get_current_user)):
+    if user.role != "admin":
+        raise HTTPException(status_code=403, detail="Not authorized")
+    content = file.file.read().decode("utf-8")
+    reader = csv.DictReader(io.StringIO(content))
+    required = {"question", "option_a", "option_b", "option_c", "option_d", "correct_key"}
+    if set(reader.fieldnames or []) != required:
+        # allow superset but must include required
+        if not required.issubset(set(reader.fieldnames or [])):
+            raise HTTPException(status_code=400, detail="Invalid CSV header. Download the template from /export/mcqs_template.csv")
+    created = 0
+    for row in reader:
+        options = {
+            "a": row.get("option_a", ""),
+            "b": row.get("option_b", ""),
+            "c": row.get("option_c", ""),
+            "d": row.get("option_d", ""),
+        }
+        correct = (row.get("correct_key") or "").strip().lower()
+        if correct not in {"a", "b", "c", "d"}:
+            continue
+        m = MCQ(question=row.get("question", "").strip(), options=options, correct_key=correct, is_active=True)
+        db.add(m)
+        created += 1
+    db.commit()
+    return {"created": created}
 
 
 @router.put("/{mcq_id}")

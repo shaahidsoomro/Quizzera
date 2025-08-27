@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routers import auth, mcqs, exams, analytics, export
+from app.routers import knowledge
 from app.models.base import Base
 from app.db.session import engine
 
@@ -17,7 +18,6 @@ app.add_middleware(
 
 @app.on_event("startup")
 def on_startup():
-    # For initial bootstrapping; in production prefer Alembic migrations
     Base.metadata.create_all(bind=engine)
 
 @app.get("/")
@@ -29,3 +29,4 @@ app.include_router(mcqs.router, prefix="/mcqs", tags=["mcqs"])
 app.include_router(exams.router, prefix="/exams", tags=["exams"])
 app.include_router(analytics.router, prefix="/analytics", tags=["analytics"])
 app.include_router(export.router, prefix="/export", tags=["export"])
+app.include_router(knowledge.router, prefix="/kb", tags=["knowledge"])

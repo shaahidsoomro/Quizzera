@@ -27,3 +27,13 @@ def export_mcqs(db: Session = Depends(get_db)):
         writer.writerow([m.id, m.question, m.options, m.correct_key, m.is_active])
     buffer.seek(0)
     return StreamingResponse(iter([buffer.getvalue()]), media_type="text/csv")
+
+
+@router.get("/mcqs_template.csv")
+def export_mcqs_template():
+    buffer = io.StringIO()
+    writer = csv.writer(buffer)
+    writer.writerow(["question", "option_a", "option_b", "option_c", "option_d", "correct_key"]) 
+    writer.writerow(["What is 2+2?", "1", "2", "3", "4", "d"]) 
+    buffer.seek(0)
+    return StreamingResponse(iter([buffer.getvalue()]), media_type="text/csv")
