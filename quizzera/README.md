@@ -26,6 +26,13 @@ Full-stack quiz and exam platform.
 - Frontend dev: `cd frontend && npm run dev`
 - Backend dev: `cd backend && uvicorn app.main:app --reload`
 
+## Admin User
+
+An admin user is automatically created on startup:
+- Email: `shahidsoomro786@gmail.com`
+- Password: `Shahid@786`
+- Role: `admin`
+
 ## Migrations
 
 Alembic runs automatically on container start (compose).
