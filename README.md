@@ -28,6 +28,8 @@ CORE FEATURES
 🎯 Exam Manager:
 - Timed mock exams
 - Randomized questions and scoring
+- Tracks exam start and submission times
+- Enforces a single attempt per user
 
 📊 Analytics & Leaderboard:
 - Track progress and attempts
@@ -115,6 +117,7 @@ LATEST UPDATES
 - AI-powered analytics
 - Certificate generator & leaderboard
 - Modern, responsive frontend
+- Exam start and submission flow with server-side scoring
 
 ------------------------------------------------------------
 ROADMAP
