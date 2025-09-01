@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Mapped, mapped_column
+from datetime import datetime
 from sqlalchemy import String, Integer, Boolean, ForeignKey, Text, DateTime, func
-from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy import JSON
 from app.models.base import Base
 
 class MCQ(Base):
@@ -8,7 +9,7 @@ class MCQ(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     question: Mapped[str] = mapped_column(Text, nullable=False)
-    options: Mapped[dict] = mapped_column(JSONB, nullable=False)
+    options: Mapped[dict] = mapped_column(JSON, nullable=False)
     correct_key: Mapped[str] = mapped_column(String(10), nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
 
@@ -27,6 +28,6 @@ class ExamAttempt(Base):
     user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id"), nullable=False)
     exam_id: Mapped[int] = mapped_column(Integer, ForeignKey("exams.id"), nullable=False)
     started_at: Mapped[DateTime] = mapped_column(DateTime(timezone=True), server_default=func.now())
-    submitted_at: Mapped[DateTime | None]
+    submitted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     score: Mapped[int | None]
-    answers: Mapped[dict] = mapped_column(JSONB, default=dict)
+    answers: Mapped[dict] = mapped_column(JSON, default=dict)

@@ -73,7 +73,7 @@ API MODULES
    - CRUD, search, category filters, bulk import/export
 
 3. Exam Manager API:
-   - Start/submit exams, server-side timer enforcement
+   - Start/submit exams
 
 4. Quiz API:
    - Single-question browsing with forced answer reveal
