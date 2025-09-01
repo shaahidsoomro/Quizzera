@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface MCQ {
   id: number;
@@ -28,6 +28,24 @@ export default function QuizPage() {
   const [score, setScore] = useState<number | null>(null);
   const started = mcqs.length > 0;
   const current = mcqs[idx];
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+    setLoading(true);
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/exams/1/result`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(res => (res.ok ? res.json() : null))
+      .then(data => {
+        if (data) {
+          setScore(data.score ?? 0);
+          setSubmitted(true);
+        }
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
 
   async function handleStart() {
     setLoading(true);
@@ -87,7 +105,7 @@ export default function QuizPage() {
         </div>
       ) : submitted ? (
         <div className="mt-6 space-y-4">
-          <p className="text-lg">Your score: {score}/{mcqs.length}</p>
+          <p className="text-lg">Your score: {score}{mcqs.length ? `/${mcqs.length}` : ''}</p>
           {error && <p className="text-red-500">{error}</p>}
         </div>
       ) : current ? (
