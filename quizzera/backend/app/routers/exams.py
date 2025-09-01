@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+from datetime import datetime, timezone
 import random
 
 from app.db.session import SessionLocal
@@ -29,8 +30,12 @@ def start_exam(exam_id: int, db: Session = Depends(get_db), user=Depends(get_cur
 
     mcqs = db.query(MCQ).filter(MCQ.is_active == True).all()
     random.shuffle(mcqs)
+    mcq_dicts = [
+        {"id": m.id, "question": m.question, "options": m.options}
+        for m in mcqs
+    ]
 
-    return {"attempt_id": attempt.id, "exam_id": exam_id, "mcqs": mcqs}
+    return {"attempt_id": attempt.id, "exam_id": exam_id, "mcqs": mcq_dicts}
 
 
 @router.post("/{exam_id}/submit")
@@ -49,6 +54,7 @@ def submit_exam(exam_id: int, payload: dict, db: Session = Depends(get_db), user
 
     attempt.answers = answers
     attempt.score = score
+    attempt.submitted_at = datetime.now(timezone.utc)
     db.commit()
     db.refresh(attempt)
 

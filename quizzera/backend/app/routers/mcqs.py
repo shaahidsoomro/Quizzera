@@ -36,7 +36,7 @@ def create_mcq(mcq: dict, db: Session = Depends(get_db), user=Depends(get_curren
 def update_mcq(mcq_id: int, mcq: dict, db: Session = Depends(get_db), user=Depends(get_current_user)):
     if user.role != "admin":
         raise HTTPException(status_code=403, detail="Not authorized")
-    m = db.query(MCQ).get(mcq_id)
+    m = db.get(MCQ, mcq_id)
     if not m:
         raise HTTPException(status_code=404, detail="Not found")
     m.question = mcq.get("question", m.question)
@@ -51,7 +51,7 @@ def update_mcq(mcq_id: int, mcq: dict, db: Session = Depends(get_db), user=Depen
 def delete_mcq(mcq_id: int, db: Session = Depends(get_db), user=Depends(get_current_user)):
     if user.role != "admin":
         raise HTTPException(status_code=403, detail="Not authorized")
-    m = db.query(MCQ).get(mcq_id)
+    m = db.get(MCQ, mcq_id)
     if not m:
         raise HTTPException(status_code=404, detail="Not found")
     db.delete(m)

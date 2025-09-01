@@ -16,7 +16,8 @@ Quizzera is Pakistan and India’s #1 **competitive exam preparation platform**,
 - India Exams: UPSC, SSC, RRB, State PCS, Banking, Teacher Eligibility
 - International Certifications: IELTS, TOEFL, GRE, GMAT, Teacher Certifications
 
-With **over 1 million MCQs**, AI-powered analytics, and personalized learning paths, Quizzera empowers aspirants to succeed in exams with confidence.
+With **over 1 million MCQs**, AI-powered analytics, and personalized learning paths,
+Quizzera empowers aspirants to succeed in exams with confidence.
 
 ------------------------------------------------------------
 CORE FEATURES
@@ -28,6 +29,8 @@ CORE FEATURES
 🎯 Exam Manager:
 - Timed mock exams
 - Randomized questions and scoring
+- Tracks exam start and submission times
+- Enforces a single attempt per user
 
 📊 Analytics & Leaderboard:
 - Track progress and attempts
@@ -73,7 +76,7 @@ API MODULES
    - CRUD, search, category filters, bulk import/export
 
 3. Exam Manager API:
-   - Start/submit exams, server-side timer enforcement
+   - Start/submit exams
 
 4. Quiz API:
    - Single-question browsing with forced answer reveal
@@ -115,6 +118,7 @@ LATEST UPDATES
 - AI-powered analytics
 - Certificate generator & leaderboard
 - Modern, responsive frontend
+- Exam start and submission flow with server-side scoring
 
 ------------------------------------------------------------
 ROADMAP

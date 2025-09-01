@@ -26,4 +26,8 @@ def export_mcqs(db: Session = Depends(get_db)):
     for m in db.query(MCQ).all():
         writer.writerow([m.id, m.question, m.options, m.correct_key, m.is_active])
     buffer.seek(0)
-    return StreamingResponse(iter([buffer.getvalue()]), media_type="text/csv")
+    return StreamingResponse(
+        iter([buffer.getvalue()]),
+        media_type="text/csv",
+        headers={"Content-Disposition": "attachment; filename=mcqs.csv"},
+    )
