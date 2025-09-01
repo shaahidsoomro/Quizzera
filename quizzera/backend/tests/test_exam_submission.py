@@ -13,7 +13,7 @@ from sqlalchemy.orm import Session
 
 from app.main import app
 from app.db.session import SessionLocal, engine
-from app.models.mcq import Exam, ExamAttempt
+from app.models.mcq import Exam, MCQ
 from app.models.user import User
 from app.models.base import Base
 from app.routers.auth import get_current_user
@@ -34,33 +34,38 @@ app.dependency_overrides[get_current_user] = override_get_current_user
 def setup_module(module):
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
-    db.query(ExamAttempt).delete()
     db.query(User).delete()
     db.query(Exam).delete()
+    db.query(MCQ).delete()
     db.commit()
     user = User(email="user@example.com", hashed_password="x", role="student")
     db.add(user)
-    db.add(Exam(title="Sample Exam"))
+    exam = Exam(title="Sample Exam")
+    db.add(exam)
+    mcq = MCQ(question="1+1?", options={"a": "2", "b": "3"}, correct_key="a", is_active=True)
+    db.add(mcq)
     db.commit()
     db.close()
 
 
 def teardown_module(module):
     db = SessionLocal()
-    db.query(ExamAttempt).delete()
     db.query(User).delete()
     db.query(Exam).delete()
+    db.query(MCQ).delete()
     db.commit()
     db.close()
 
 
-def test_start_exam_twice_returns_400():
+def test_submit_exam_scores_correctly():
     db = SessionLocal()
     exam = db.query(Exam).first()
     db.close()
-    url = f"/exams/{exam.id}/start"
-    first = client.post(url)
-    assert first.status_code == 200
-    second = client.post(url)
-    assert second.status_code == 400
+    start = client.post(f"/exams/{exam.id}/start")
+    assert start.status_code == 200
+    mcq_id = start.json()["mcqs"][0]["id"]
+    payload = {"answers": {str(mcq_id): "a"}}
+    submit = client.post(f"/exams/{exam.id}/submit", json=payload)
+    assert submit.status_code == 200
+    assert submit.json()["score"] == 1
 

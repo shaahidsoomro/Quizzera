@@ -16,7 +16,8 @@ Quizzera is Pakistan and India’s #1 **competitive exam preparation platform**,
 - India Exams: UPSC, SSC, RRB, State PCS, Banking, Teacher Eligibility
 - International Certifications: IELTS, TOEFL, GRE, GMAT, Teacher Certifications
 
-With **over 1 million MCQs**, AI-powered analytics, and personalized learning paths, Quizzera empowers aspirants to succeed in exams with confidence.
+With **over 1 million MCQs**, AI-powered analytics, and personalized learning paths,
+Quizzera empowers aspirants to succeed in exams with confidence.
 
 ------------------------------------------------------------
 CORE FEATURES
